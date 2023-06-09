@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
 
-const ImageToText = () =>{
+const PdfToText = () =>{
     const [file, setFile] = useState(null)
     const [option, setOption] = useState('fas')
     const [histori, setHistori] = useState([])
@@ -22,7 +22,7 @@ const ImageToText = () =>{
         data.append('pua',pua)
         data.append('option',option)
         if (file!=null) {
-            axios.post(OnRun+'/api/imagetotext',data)
+            axios.post(OnRun+'/api/pdftotext',data)
                 .then(response=>{
                     if(response.data.replay){
                         setHistori(response.data.histori)
@@ -71,17 +71,15 @@ const ImageToText = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل عکس به متن</h2>
+                <h2>تبدیل پی دی اف به متن</h2>
                 <section className="option">
-                    <input  accept="image/*" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
+                    <input  accept=".pdf" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
                     <label className={file!=null?'selectedFile':''} htmlFor='file' >آپلود فایل</label>
                     <div className='rdi'>
                         <input checked={option=='eng'} onChange={e=>setOption(e.target.value)} id='en' type='radio' name="lng" value="eng"/>
                         <label htmlFor='en'>انگلیسی<span></span></label>
                         <input checked={option=='fas'} onChange={e=>setOption(e.target.value)} id='fa' type='radio' name="lng" value="fas"/>
                         <label htmlFor='fa'>فارسی<span></span></label>
-                        <input checked={option=='are'} onChange={e=>setOption(e.target.value)} id='ar' type='radio' name="lng" value="are"/>
-                        <label htmlFor='ar'>عربی<span></span></label>
                     </div>
                     <button className="applyBtn" onClick={apply}>تبدیل</button>
                 </section>
@@ -117,4 +115,4 @@ const ImageToText = () =>{
     )
 }
 
-export default ImageToText
+export default PdfToText

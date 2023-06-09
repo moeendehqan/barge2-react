@@ -14,6 +14,27 @@ html, body, #root {
   height: 100%;
 }
 
+.postive-toast .Toastify__progress-bar--success {
+  background: #27b4c1 !important;
+}
+.postive-toast svg {
+  fill: #27b4c1 !important;
+}
+
+.negetive-toast .Toastify__progress-bar--error {
+  background: #fb460b !important;
+}
+.negetive-toast svg {
+  fill: #fb460b !important;
+}
+
+.warning-toast .Toastify__progress-bar--warning {
+  background: #fb950b !important;
+}
+.warning-toast svg {
+  fill: #fb950b !important;
+}
+
 header {
   background: #464646;
   height: 150px;
@@ -81,7 +102,7 @@ header .LoginHeader .login {
   align-items: center;
   cursor: pointer;
 }
-header .LoginHeader .login p {
+header .LoginHeader .login > p {
   color: #eaf3f6;
   font-size: 15pt;
   margin: 0px 5px;
@@ -93,6 +114,54 @@ header .LoginHeader .login span {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+header .LoginHeader .login .mnhb {
+  justify-content: center;
+}
+header .LoginHeader .login .mnhb:hover .mnhb-mn {
+  display: flex;
+}
+header .LoginHeader .login .mnhb .mnhb-mn {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background: #ffffff;
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  flex-direction: column;
+  overflow: hidden;
+  width: 150px;
+  left: 7%;
+}
+header .LoginHeader .login .mnhb .mnhb-mn p {
+  color: #464646;
+  padding: 3px 15px;
+  text-align: center;
+  font-size: 13pt;
+}
+header .LoginHeader .login .mnhb .mnhb-mn :nth-child(1) {
+  background: #a9e1e6;
+  padding: 5px 15px;
+  border-bottom: 1px #27b4c1 solid;
+  font-size: 15pt;
+}
+header .LoginHeader .login .mnhb .mnhb-mn .mnhb-btn:hover {
+  color: #27b4c1;
+}
+header .LoginHeader .login .hearts {
+  display: flex;
+  flex-direction: row-reverse;
+}
+header .LoginHeader .login .hearts p {
+  color: #fbd00b;
+  font-size: 15pt;
+  display: flex;
+  align-items: center;
+}
+header .LoginHeader .login .nameUser {
+  color: #eaf3f6;
+  font-size: 14pt;
+  margin: 0px 10px;
 }
 
 footer {
@@ -191,6 +260,18 @@ main {
   color: #464646;
 }
 
+.msgInPage {
+  border: 2px #d42c2d solid;
+  border-right-width: 5px;
+  margin-top: 25px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.msgInPage p {
+  color: #464646;
+}
+
 .pghlf {
   display: flex;
   flex-direction: row;
@@ -200,15 +281,21 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
-.pghlf > section div {
+.pghlf > section h2 {
+  background: #fbd00b;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-bottom: 45px;
+}
+.pghlf > section .frmLg {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.pghlf > section div input {
+.pghlf > section .frmLg input {
   width: 250px;
   height: 40px;
   border: 1px #27b4c1 solid;
@@ -218,21 +305,21 @@ main {
   font-size: 13pt;
   color: #464646;
 }
-.pghlf > section div input::-moz-placeholder {
+.pghlf > section .frmLg input::-moz-placeholder {
   color: rgba(70, 70, 70, 0.6);
 }
-.pghlf > section div input::placeholder {
+.pghlf > section .frmLg input::placeholder {
   color: rgba(70, 70, 70, 0.6);
 }
-.pghlf > section div input:focus {
+.pghlf > section .frmLg input:focus {
   outline: 0px;
   border: 1px #fbd00b solid;
 }
-.pghlf > section div input::-webkit-inner-spin-button, .pghlf > section div input::-webkit-outer-spin-button {
+.pghlf > section .frmLg input::-webkit-inner-spin-button, .pghlf > section .frmLg input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.pghlf > section div button {
+.pghlf > section .frmLg button {
   background: #27b4c1;
   width: 250px;
   height: 40px;
@@ -241,14 +328,603 @@ main {
   color: #eaf3f6;
   font-size: 20pt;
 }
-.pghlf > section div .captchaImg {
+.pghlf > section .frmLg .captchaImg {
   border-radius: 8px;
   border: 1px #27b4c1 solid;
   cursor: pointer;
+}
+.pghlf > section .prflFrm {
+  display: flex;
+  flex-direction: column;
+}
+.pghlf > section .prflFrm > input {
+  width: 250px;
+  height: 40px;
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  margin: 10px;
+  text-align: center;
+  font-size: 13pt;
+  color: #464646;
+}
+.pghlf > section .prflFrm > input::-moz-placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf > section .prflFrm > input::placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf > section .prflFrm > input:focus {
+  outline: 0px;
+  border: 1px #fbd00b solid;
+}
+.pghlf > section .prflFrm > input::-webkit-inner-spin-button, .pghlf > section .prflFrm > input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.pghlf > section .prflFrm .datebirth {
+  width: 250px;
+  height: 40px;
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  margin: 10px;
+  text-align: center;
+  font-size: 13pt;
+  color: #464646;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.pghlf > section .prflFrm .datebirth::-moz-placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf > section .prflFrm .datebirth::placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf > section .prflFrm .datebirth:focus {
+  outline: 0px;
+  border: 1px #fbd00b solid;
+}
+.pghlf > section .prflFrm .datebirth::-webkit-inner-spin-button, .pghlf > section .prflFrm .datebirth::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.pghlf > section .prflFrm .datebirth .rmdp-button {
+  border: 0px;
+  background: #ffffff;
+  color: #787a7b;
+}
+.pghlf > section .prflFrm .datebirth .rmdp-container {
+  font-family: "arial";
+}
+.pghlf > section .prflFrm .datebirth > p {
+  border-left: 1px #bcccd2 solid;
+  color: #787a7b;
+  width: 40%;
+}
+.pghlf > section .prflFrm .inpRdiIcn {
+  width: 250px;
+  height: 40px;
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  margin: 10px;
+  text-align: center;
+  font-size: 13pt;
+  color: #464646;
+  display: flex;
+  flex-direction: row;
+}
+.pghlf > section .prflFrm .inpRdiIcn::-moz-placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf > section .prflFrm .inpRdiIcn::placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf > section .prflFrm .inpRdiIcn:focus {
+  outline: 0px;
+  border: 1px #fbd00b solid;
+}
+.pghlf > section .prflFrm .inpRdiIcn::-webkit-inner-spin-button, .pghlf > section .prflFrm .inpRdiIcn::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.pghlf > section .prflFrm .inpRdiIcn input {
+  display: none;
+  align-items: center;
+}
+.pghlf > section .prflFrm .inpRdiIcn input + label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pghlf > section .prflFrm .inpRdiIcn input + label span {
+  font-size: 21pt;
+  color: #787a7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pghlf > section .prflFrm .inpRdiIcn input:checked + label span {
+  color: #27b4c1;
+}
+.pghlf > section > button {
+  background: #27b4c1;
+  width: 250px;
+  height: 40px;
+  border: 0px;
+  border-radius: 8px;
+  color: #eaf3f6;
+  font-size: 20pt;
+}
+.pghlf > section .pay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 350px;
+}
+.pghlf > section .pay input {
+  display: none;
+}
+.pghlf > section .pay input + label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.pghlf > section .pay input + label > p {
+  font-size: 18pt;
+  color: #27b4c1;
+}
+.pghlf > section .pay input + label::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px #27b4c1 solid;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
+.pghlf > section .pay input + label .ticket1 h6 {
+  text-decoration: none !important;
+}
+.pghlf > section .pay input + label .ticket1 .cut {
+  top: -4px !important;
+}
+.pghlf > section .pay input + label .ticket1 .cut i {
+  border: 1px #27b4c1 solid;
+  background: #fff;
+  height: 5px !important;
+  width: 5px !important;
+  margin: 3px 0px 4px 0px !important;
+}
+.pghlf > section .pay input + label .ticket2 .perMonth {
+  background: rgba(39, 180, 193, 0.3);
+  border-color: rgba(39, 180, 193, 0.6) !important;
+}
+.pghlf > section .pay input + label .ticket3 .perMonth {
+  background: rgba(120, 122, 123, 0.5);
+  border-color: #787a7b !important;
+}
+.pghlf > section .pay input + label .ticket6 .perMonth {
+  background: rgba(39, 180, 193, 0.85);
+  border-color: #27b4c1 !important;
+}
+.pghlf > section .pay input + label .ticket12 .perMonth {
+  background: rgba(251, 208, 11, 0.95);
+  border-color: #fbd00b !important;
+}
+.pghlf > section .pay input + label .ticket {
+  width: 100%;
+  height: 60px;
+  display: grid;
+  grid-template-columns: 140px 75px 5px 130px;
+  position: relative;
+  overflow: hidden;
+}
+.pghlf > section .pay input + label .ticket h6 {
+  border: 1px #27b4c1 solid;
+  border-left: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 20pt;
+  text-align: center;
+  color: #464646;
+  text-decoration: line-through;
+}
+.pghlf > section .pay input + label .ticket .off {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 1px #27b4c1 solid;
+  border-left: 0px;
+  border-right: 0px;
+}
+.pghlf > section .pay input + label .ticket .off p {
+  font-size: 18pt;
+  color: #27b4c1;
+  margin: 0px;
+  text-align: center;
+  height: 28px;
+}
+.pghlf > section .pay input + label .ticket .off span {
+  font-size: 16pt;
+  color: #fbd00b;
+  margin: 0px;
+  text-align: center;
+  height: 30px;
+}
+.pghlf > section .pay input + label .ticket .cut {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 3px;
+  left: 133px;
+  top: -6px;
+  z-index: 1;
+}
+.pghlf > section .pay input + label .ticket .cut i {
+  width: 6px;
+  height: 6px;
+  margin: 3px 0px 3px 0px;
+  border-radius: 50%;
+  background: #fff;
+}
+.pghlf > section .pay input + label .ticket .perMonth {
+  width: 133px;
+  display: flex;
+  flex-direction: column-reverse;
+  border: 1px #27b4c1 solid;
+  border-right: 0px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.pghlf > section .pay input + label .ticket .perMonth span {
+  text-align: center;
+  color: #464646;
+  font-size: 22pt;
+  margin: 0px;
+  height: 28px;
+}
+.pghlf > section .pay input + label .ticket .perMonth p {
+  color: #fff;
+  font-size: 13pt;
+  text-align: left;
+  margin-left: 20%;
+}
+.pghlf > section .pay input:checked + label::before {
+  background: #27b4c1;
 }
 .pghlf > img {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50%;
+}
+.pghlf .intRdi {
+  display: flex;
+  flex-direction: row;
+  width: 250px;
+  height: 40px;
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  margin: 10px;
+  text-align: center;
+  font-size: 13pt;
+  color: #464646;
+  border: 1px #fbd00b solid;
+}
+.pghlf .intRdi::-moz-placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf .intRdi::placeholder {
+  color: rgba(70, 70, 70, 0.6);
+}
+.pghlf .intRdi:focus {
+  outline: 0px;
+  border: 1px #fbd00b solid;
+}
+.pghlf .intRdi::-webkit-inner-spin-button, .pghlf .intRdi::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.pghlf .intRdi > input {
+  display: none;
+}
+.pghlf .intRdi > input + label {
+  flex: 1;
+  transition: 0.5s;
+  font-size: 19pt;
+  color: #464646;
+}
+.pghlf .intRdi > input:checked + label {
+  background: #fbd00b;
+  flex: 2;
+}
+
+.sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sub .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px #bcccd2 solid;
+  border-radius: 10px;
+  padding: 50px 100px;
+}
+.sub .box h2 {
+  font-size: 19pt;
+  color: #464646;
+  text-align: right;
+  margin: 0px 0px 40px 0px;
+  align-self: self-start;
+}
+.sub .box .option {
+  display: flex;
+  flex-direction: row;
+}
+.sub .box .option .inputNumber {
+  border: 1px #fbd00b solid;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 100px;
+  margin: 0px 5px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 15pt;
+}
+.sub .box .option .inputNumber:focus {
+  outline: 0px;
+}
+.sub .box .option .inputNumber::-webkit-inner-spin-button {
+  display: none;
+}
+.sub .box .option .inputNumber::-webkit-outer-spin-button {
+  display: none;
+}
+.sub .box .option .file {
+  display: none;
+}
+.sub .box .option .file + label {
+  width: 250px;
+  margin: 0px 5px;
+  height: 40px;
+  border-radius: 8px;
+  background: #fbd00b;
+  padding: 0px 15px;
+  color: #464646;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sub .box .option .selectedFile {
+  background: #27b4c1 !important;
+  color: #eaf3f6 !important;
+}
+.sub .box .option .rdi {
+  border: 1px #fbd00b solid;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 300px;
+  margin: 0px 5px;
+  overflow: hidden;
+}
+.sub .box .option .rdi input[type=radio] {
+  display: none;
+}
+.sub .box .option .rdi input[type=radio] + label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 13pt;
+  color: #464646;
+}
+.sub .box .option .rdi input[type=radio] + label::before {
+  display: inline-block;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 1px #fbd00b solid;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+.sub .box .option .rdi input[type=radio]:checked + label::before {
+  background: #fbd00b;
+}
+.sub .box .option .rdi .rmdp-container {
+  width: 100%;
+  height: 100% !important;
+}
+.sub .box .option .rdi .rmdp-container .rmdp-input {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  text-align: center;
+}
+.sub .box .option .rdi .titleInput {
+  color: #787a7b;
+}
+.sub .box .option .rdi .inputOption {
+  border: 1px #fbd00b solid;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 100px;
+  margin: 0px 5px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 15pt;
+  border: 0px;
+}
+.sub .box .option .rdi .inputOption:focus {
+  outline: 0px;
+}
+.sub .box .option .rdi .inputOption::-webkit-inner-spin-button {
+  display: none;
+}
+.sub .box .option .rdi .inputOption::-webkit-outer-spin-button {
+  display: none;
+}
+.sub .box .option .applyBtn {
+  background: #27b4c1;
+  width: 250px;
+  height: 40px;
+  border: 0px;
+  border-radius: 8px;
+  color: #eaf3f6;
+  font-size: 20pt;
+  width: 150px;
+}
+.sub .box .result {
+  margin: 40px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sub .box .result textarea {
+  width: calc(100% - 30px);
+  height: 300px;
+  border: 1px #27b4c1 solid;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0px;
+}
+.sub .box .result textarea:focus {
+  outline: 0px;
+  border: 1px #fbd00b solid;
+}
+.sub .box .result > button {
+  background: #27b4c1;
+  width: 250px;
+  height: 40px;
+  border: 0px;
+  border-radius: 8px;
+  color: #eaf3f6;
+  font-size: 20pt;
+  width: 100px;
+}
+.sub .box .result .convertdatebox {
+  border-top: 1px rgba(80, 151, 158, 0.3) solid;
+  height: auto;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.sub .box .result .convertdatebox .dateBox {
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  flex: 1;
+  margin: 10px;
+  padding: 3px;
+  justify-content: center;
+  align-items: center;
+}
+.sub .box .result .convertdatebox .dateBox h6 {
+  font-size: 16pt;
+  text-align: center;
+  color: #787a7b;
+}
+.sub .box .result .convertdatebox .dateBox p {
+  font-size: 12pt;
+  text-align: center;
+  color: #787a7b;
+}
+.sub .box .result .convertdatebox .dateBorj {
+  border: 1px #27b4c1 solid;
+  border-radius: 8px;
+  flex: 1;
+  margin: 10px;
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.sub .box .result .convertdatebox .dateBorj div h6 {
+  font-size: 16pt;
+  text-align: center;
+  color: #787a7b;
+}
+.sub .box .result .convertdatebox .dateBorj div p {
+  font-size: 12pt;
+  text-align: center;
+  color: #787a7b;
+}
+.sub .box .result .convertdatebox .dateBorj img {
+  width: 45%;
+}
+.sub .box .histori {
+  margin: 20px 0px;
+  width: 100%;
+  border-top: 1px #bcccd2 solid;
+}
+.sub .box .histori h6 {
+  color: #787a7b;
+  font-size: 13pt;
+  margin: 20px 0px;
+}
+.sub .box .histori .items {
+  display: flex;
+  flex-direction: row;
+}
+.sub .box .histori .items .item {
+  width: 140px;
+  height: 210px;
+  background: #27b4c1;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.sub .box .histori .items .item .title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 14pt;
+}
+.sub .box .histori .items .item .date {
+  text-align: center;
+  color: #eaf3f6;
+  font-size: 12pt;
+}
+.sub .box .histori .items .item:hover span {
+  display: flex;
+}
+.sub .box .histori .items .item span {
+  display: none;
+  position: absolute;
+  background: #eaf3f6;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  top: calc(50% - 35px);
+  align-items: center;
+  justify-content: center;
+  font-size: 40pt;
+  color: #464646;
 }/*# sourceMappingURL=style.css.map */

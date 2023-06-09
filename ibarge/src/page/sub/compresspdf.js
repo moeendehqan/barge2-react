@@ -2,28 +2,25 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { getCookie } from "../../function/cookie"
 import { OnRun } from "../../config/OnRun"
-import clipboardCopy from 'clipboard-copy';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
 
-const ImageToText = () =>{
+const CompressPdf = () =>{
     const [file, setFile] = useState(null)
-    const [option, setOption] = useState('fas')
+
     const [histori, setHistori] = useState([])
     const [result, setResult] = useState('')
     const pua = getCookie('pua')
-
 
 
     const apply = () =>{
         const data = new FormData()
         data.append('file',file)
         data.append('pua',pua)
-        data.append('option',option)
         if (file!=null) {
-            axios.post(OnRun+'/api/imagetotext',data)
-                .then(response=>{
+            axios.post(OnRun+'/api/compresspdf',data)
+            .then(response=>{
                     if(response.data.replay){
                         setHistori(response.data.histori)
                         setResult(response.data.result)
@@ -40,13 +37,10 @@ const ImageToText = () =>{
         }
     }
 
-    const copy = () =>{
-        clipboardCopy(result)
-        toast.success('کپی شد!',{position: toast.POSITION.BOTTOM_RIGHT,className: 'postive-toast'});
-    }
+
 
     const getHistori = () =>{
-        axios.post(OnRun+'/gethistori/imagetotext',{'pua':pua})
+        axios.post(OnRun+'/gethistori/compresspdf',{'pua':pua})
             .then(response=>{
                 if (response.data.replay) {
                     setHistori(response.data.histori)
@@ -60,35 +54,45 @@ const ImageToText = () =>{
     }
 
 
+    const download = () =>{
+        axios.get(OnRun+'/download/'+result,{responseType: 'blob'})
+            .then(response=>{
+                console.log(response.data)
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', result);
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            })
+    }
+
     const historiToResult = (item) =>{
         setResult(item)
         toast.success('تاریخچه!',{position: toast.POSITION.BOTTOM_RIGHT,className: 'postive-toast'});
     }
 
-    useEffect(getHistori,[])
 
+
+    useEffect(getHistori,[])
     return(
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل عکس به متن</h2>
+                <h2>کاهش حجم ی دی اف</h2>
                 <section className="option">
-                    <input  accept="image/*" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
+                    <input  accept=".pdf" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
                     <label className={file!=null?'selectedFile':''} htmlFor='file' >آپلود فایل</label>
-                    <div className='rdi'>
-                        <input checked={option=='eng'} onChange={e=>setOption(e.target.value)} id='en' type='radio' name="lng" value="eng"/>
-                        <label htmlFor='en'>انگلیسی<span></span></label>
-                        <input checked={option=='fas'} onChange={e=>setOption(e.target.value)} id='fa' type='radio' name="lng" value="fas"/>
-                        <label htmlFor='fa'>فارسی<span></span></label>
-                        <input checked={option=='are'} onChange={e=>setOption(e.target.value)} id='ar' type='radio' name="lng" value="are"/>
-                        <label htmlFor='ar'>عربی<span></span></label>
-                    </div>
                     <button className="applyBtn" onClick={apply}>تبدیل</button>
                 </section>
                 <section className="result">
-                    <textarea value={result} onChange={e=>setResult(e.target.value)} />
-                    <button onClick={copy}>کپی</button>
-
+                    {
+                        result===''?null:
+                        <button onClick={download}>دریافت</button>
+                    }
                 </section>
                 <section className="histori">
                     <h6>تاریخچه</h6>
@@ -104,17 +108,11 @@ const ImageToText = () =>{
                                 )
                             })
                         }
-
                     </div>
-
-
-
                 </section>
-
             </div>
         </div>
-
     )
 }
 
-export default ImageToText
+export default CompressPdf
