@@ -1,6 +1,7 @@
 import Header from "../componets/header"
 import HomeMenu from "../componets/HomeMenu"
 import { Outlet } from "react-router-dom"
+import Footer from "../componets/Footer"
 
 const Desk = () =>{
     return(
@@ -9,6 +10,7 @@ const Desk = () =>{
             <main>
                 <Outlet />
             </main>
+            <Footer />
         </div>
     )
 }
