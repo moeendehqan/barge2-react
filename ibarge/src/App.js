@@ -1,5 +1,6 @@
 import './style/style.css'
 import { BrowserRouter , Routes, Route } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './page/home';
 import Desk from './page/desk';
@@ -15,6 +16,7 @@ import CompressImage from './page/sub/compressimage';
 import ImageFromPdf from './page/sub/imagefrompdf';
 import CompressPdf from './page/sub/compresspdf';
 import MergePdf from './page/sub/mergepdf';
+import ExtractColors from './page/sub/extractcolors';
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
           <Route path='imagefrompdf' element={<ImageFromPdf/>}></Route>
           <Route path='compresspdf' element={<CompressPdf/>}></Route>
           <Route path='mergepdf' element={<MergePdf/>}></Route>
+          <Route path='extractcolors' element={<ExtractColors/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

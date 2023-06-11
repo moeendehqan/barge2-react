@@ -85,8 +85,8 @@ const CompressPdf = () =>{
                 <h2>کاهش حجم ی دی اف</h2>
                 <section className="option">
                     <input  accept=".pdf" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
-                    <label className={file!=null?'selectedFile':''} htmlFor='file' >آپلود فایل</label>
-                    <button className="applyBtn" onClick={apply}>تبدیل</button>
+                    <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری پی دی اف</label>
+                    <button className="applyBtn" onClick={apply}>اعمال</button>
                 </section>
                 <section className="result">
                     {

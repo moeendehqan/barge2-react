@@ -44,7 +44,7 @@ const LoremIpsum = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل عکس به متن</h2>
+                <h2>متن تصادفی</h2>
                 <section className="option">
                     <input className="inputNumber" type="number" value={amount} onChange={(e)=>setAmount(e.target.value)} />
                     <div className='rdi'>
@@ -55,7 +55,7 @@ const LoremIpsum = () =>{
                         <input checked={option=='wrd'} onChange={e=>setOption(e.target.value)} id='wrd' type='radio' value="wrd"/>
                         <label htmlFor='wrd'>کلمه<span></span></label>
                     </div>
-                    <button className="applyBtn" onClick={apply}>تبدیل</button>
+                    <button className="applyBtn" onClick={apply}>ایجاد</button>
                 </section>
                 <section className="result">
                     <textarea value={result} onChange={e=>setResult(e.target.value)} />

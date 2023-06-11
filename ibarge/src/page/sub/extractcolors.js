@@ -2,27 +2,30 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { getCookie } from "../../function/cookie"
 import { OnRun } from "../../config/OnRun"
+import clipboardCopy from 'clipboard-copy';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
+import { rgbToHex ,invertRgbColor} from "../../function/rgbToHex";
+import { RxCopy } from "react-icons/rx";
 
-const MergePdf = () =>{
-    const [file1, setFile1] = useState(null)
-    const [file2, setFile2] = useState(null)
-
+const ExtractColors = () =>{
+    const [file, setFile] = useState(null)
+    const [option, setOption] = useState(5)
     const [histori, setHistori] = useState([])
-    const [result, setResult] = useState('')
+    const [result, setResult] = useState([])
     const pua = getCookie('pua')
+
+
 
 
     const apply = () =>{
         const data = new FormData()
-        data.append('file1',file1)
-        data.append('file2',file2)
+        data.append('file',file)
         data.append('pua',pua)
-        if (file1!=null && file2!=null) {
-            axios.post(OnRun+'/api/mergepdf',data)
-            .then(response=>{
+        data.append('option',option)
+        if (file!=null) {
+            axios.post(OnRun+'/api/extractcolors',data)
+                .then(response=>{
                     if(response.data.replay){
                         setHistori(response.data.histori)
                         setResult(response.data.result)
@@ -39,10 +42,13 @@ const MergePdf = () =>{
         }
     }
 
-
+    const copyItem = (item) =>{
+        clipboardCopy(item)
+        toast.success('کپی شد!',{position: toast.POSITION.BOTTOM_RIGHT,className: 'postive-toast'});
+    }
 
     const getHistori = () =>{
-        axios.post(OnRun+'/gethistori/mergepdf',{'pua':pua})
+        axios.post(OnRun+'/gethistori/extractcolors',{'pua':pua})
             .then(response=>{
                 if (response.data.replay) {
                     setHistori(response.data.histori)
@@ -55,21 +61,13 @@ const MergePdf = () =>{
             })
     }
 
+    const changeOption = (e) =>{
+        if (e>1 && e<=100) {
+            setOption(e)
+        }else{
+            toast.warning('تعداد باید بین 1 و 100 باشد',{position: toast.POSITION.BOTTOM_RIGHT,className: 'warning-toast'});
 
-    const download = () =>{
-        axios.get(OnRun+'/download/'+result,{responseType: 'blob'})
-            .then(response=>{
-                console.log(response.data)
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', result);
-                link.style.display = 'none';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-            })
+        }
     }
 
     const historiToResult = (item) =>{
@@ -80,23 +78,41 @@ const MergePdf = () =>{
 
 
     useEffect(getHistori,[])
+
     return(
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>ادغام پی دی اف</h2>
+                <h2>استخراج رنگ از تصویر</h2>
                 <section className="option">
-                    <input  accept=".pdf" onChange={(e)=>setFile1(e.target.files[0])} className='file' id='file1' type='file'/>
-                    <label className={file1!=null?'selectedFile':''} htmlFor='file1' >بارگذاری پی دی اف</label>
-                    <input  accept=".pdf" onChange={(e)=>setFile2(e.target.files[0])} className='file' id='file2' type='file'/>
-                    <label className={file2!=null?'selectedFile':''} htmlFor='file2' >بارگذاری پی دی اف</label>
-                    <button className="applyBtn" onClick={apply}>ادغام</button>
+                    <input  accept="image/*" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
+                    <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری تصویر</label>
+
+                    <div className='rdi'>
+                        <p className="titleInput">تعداد</p>
+                        <input className="inputOption" value={option} onChange={e=>changeOption(e.target.value)} type="number" />
+                    </div>
+                    <button className="applyBtn" onClick={apply}>استخراج</button>
                 </section>
                 <section className="result">
-                    {
-                        result===''?null:
-                        <button onClick={download}>دریافت</button>
-                    }
+                    <div className="colorBox">
+                        {
+                            result.map(i=>{
+
+                                const backgroundColor = 'rgb(' + String(i) + ')'
+                                return(
+                                    <div className="colorItem" style={{background:backgroundColor}} onClick={()=>copyItem(rgbToHex(i[0],i[1],i[2]))}>
+                                        <p style={{color:invertRgbColor(backgroundColor)}}>{rgbToHex(i[0],i[1],i[2])}</p>
+                                        <div className="copyItem">
+                                            <span><RxCopy/></span>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+
+
                 </section>
                 <section className="histori">
                     <h6>تاریخچه</h6>
@@ -112,11 +128,14 @@ const MergePdf = () =>{
                                 )
                             })
                         }
+
                     </div>
                 </section>
+
             </div>
         </div>
+
     )
 }
 
-export default MergePdf
+export default ExtractColors

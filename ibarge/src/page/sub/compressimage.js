@@ -84,6 +84,7 @@ const CompressImage = () =>{
         }
     }
 
+
     useEffect(getHistori,[])
     return(
         <div className="sub">
@@ -92,12 +93,12 @@ const CompressImage = () =>{
                 <h2>کاهش حجم عکس</h2>
                 <section className="option">
                     <input  accept="image/*" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
-                    <label className={file!=null?'selectedFile':''} htmlFor='file' >آپلود فایل</label>
+                    <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری تصویر</label>
                     <div className='rdi'>
                         <p className="titleInput">کیفیت</p>
                         <input className="inputOption" value={option} onChange={e=>changeOption(e.target.value)} type="number" />
                     </div>
-                    <button className="applyBtn" onClick={apply}>تبدیل</button>
+                    <button className="applyBtn" onClick={apply}>اعمال</button>
                 </section>
                 <section className="result">
                     {

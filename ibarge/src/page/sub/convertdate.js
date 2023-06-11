@@ -47,7 +47,7 @@ const ConvertDate = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل پی دی اف به ورد</h2>
+                <h2>تبدیل تاریخ</h2>
                 <section className="option">
                     <div className='rdi'>
                         <input checked={option=='fromGorgian'} onChange={e=>setOption(e.target.value)} id='gr_sh' type='radio' name="type" value="fromGorgian"/>

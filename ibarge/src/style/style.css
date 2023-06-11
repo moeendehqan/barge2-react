@@ -284,7 +284,6 @@ main {
   justify-content: flex-start;
 }
 .pghlf > section h2 {
-  background: #fbd00b;
   padding: 5px 15px;
   border-radius: 5px;
   margin-bottom: 45px;
@@ -875,6 +874,49 @@ main {
 }
 .sub .box .result .convertdatebox .dateBorj img {
   width: 45%;
+}
+.sub .box .result .colorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sub .box .result .colorBox .colorItem {
+  width: 300px;
+  height: 50px;
+  margin: 0px 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+.sub .box .result .colorBox .colorItem p {
+  text-align: left;
+  width: 50%;
+}
+.sub .box .result .colorBox .colorItem .copyItem {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  width: 30px;
+  height: 30px;
+  background: #ffffff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+.sub .box .result .colorBox .colorItem .copyItem span {
+  font-size: 15pt;
+  color: #787a7b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sub .box .result .colorBox .colorItem:hover .copyItem {
+  visibility: visible;
 }
 .sub .box .histori {
   margin: 20px 0px;

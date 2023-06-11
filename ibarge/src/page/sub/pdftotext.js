@@ -74,7 +74,7 @@ const PdfToText = () =>{
                 <h2>تبدیل پی دی اف به متن</h2>
                 <section className="option">
                     <input  accept=".pdf" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
-                    <label className={file!=null?'selectedFile':''} htmlFor='file' >آپلود فایل</label>
+                    <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری پی دی اف</label>
                     <div className='rdi'>
                         <input checked={option=='eng'} onChange={e=>setOption(e.target.value)} id='en' type='radio' name="lng" value="eng"/>
                         <label htmlFor='en'>انگلیسی<span></span></label>

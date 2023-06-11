@@ -4,19 +4,19 @@ import { OnRun } from "../../config/OnRun"
 import MsgInPage from "../../componets/msg/MsgInPage"
 import { getCookie, setCookie } from "../../function/cookie"
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Login = ()=>{
     const [captchaImage,setCaptchaImage] = useState(null)
-    const [msg,setMsg] = useState('')
     const [input,setInput] = useState({phone:'',captcha:'',captchaCrypto:'',phase:'phone',code:''})
     const navigate = useNavigate()
 
 
 
     const applyPhone = () =>{
-        if (input.phone.length!=11) {setMsg('شماره همراه را به صورت صحیح وارد کنید')
-        }else if(input.captcha.length!=4){setMsg('کد کپچا را به صورت صحیح وراد کنید')
+        if (input.phone.length!=11) {toast.error('شماره همراه را به صورت صحیح وارد کنید',{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'})
+        }else if(input.captcha.length!=4){toast.error('کد داخل تصویر صحبح نیست',{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'})
         }else{
             setInput({...input,phase:'code'})
             axios({method:'POST', url:OnRun+'/applyphone',data:input
@@ -24,7 +24,8 @@ const Login = ()=>{
                 if (response.data.replay){
                 }else{
                     setInput({...input,phase:'phone'})
-                    setMsg(response.data.msg)
+                    toast.error(response.data.msg,{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'});
+
                 }
             })
         }
@@ -37,7 +38,7 @@ const Login = ()=>{
                 setCookie('pua',response.data.cookie,10)
                 navigate('/')
             }else{
-                setMsg(response.data.msg)
+                toast.error(response.data.msg,{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'});
             }
         })
     }
@@ -72,8 +73,9 @@ const Login = ()=>{
     useEffect(LoginByPUA,[])
     return(
         <div className="pghlf">
+            <ToastContainer autoClose={3000} />
             <section>
-                <h2>ورود / ثبتنام</h2>
+                <h2>ورود با شماره همراه</h2>
 
                 {
                     input.phase=='phone'?
@@ -81,20 +83,16 @@ const Login = ()=>{
                     <div className="frmLg">
                         <input value={input.phone} onChange={(e)=>setInput({...input,phone:e.target.value})} type="number" placeholder="شماره همراه"/>
                         {captchaImage?<img className="captchaImg" onClick={getCaptcha} src={captchaImage} />:null}
-                        <input value={input.captcha} onChange={(e)=>setInput({...input,captcha:e.target.value})} type="number" placeholder="کد کپچا" />
+                        <input value={input.captcha} onChange={(e)=>setInput({...input,captcha:e.target.value})} type="number" placeholder="کد داخل تصویر را وارد کنید" />
                         <button onClick={applyPhone}>تایید</button>
                     </div>
                     :
                     <div className="frmLg">
-                        <input value={input.code} onChange={(e)=>setInput({...input,code:e.target.value})} type="number" placeholder="کد تایید"/>
+                        <input value={input.code} onChange={(e)=>setInput({...input,code:e.target.value})} type="number" placeholder="کد پیامک شده را وارد کنید"/>
                         <button onClick={applyCode}>تایید</button>
                     </div>
 
                 }
-
-
-                <MsgInPage msg={msg} set={setMsg}/>
-
             </section>
             <img src="/img/loginVector.svg" />
 
