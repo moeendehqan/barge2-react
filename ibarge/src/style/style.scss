@@ -4,6 +4,14 @@
     src: url('../../public/Font/YekanBoom.woff2') format('woff2');
 }
 
+@font-face {
+    font-family: 'Shabnam-Medium-FD';
+    src: url('../../public/Font/Shabnam-Medium-FD.ttf') format('ttf');
+    src: url('../../public/Font/Shabnam-Medium-FD.eot') format('ttf');
+    src: url('../../public/Font/Shabnam-Medium-FD.woff2') format('woff2');
+}
+
+
 
 *{
     margin: 0px;
@@ -113,6 +121,18 @@ $sizeSide: 7%;
     }
     svg{
         fill: mix($clrMetallicRed, $clrMetallicYellow, 30) !important;
+    }
+}
+
+.rmdp-button,.rmdp-container{
+    font-family: 'Shabnam-Medium-FD' !important;
+
+    input{
+        font-family: 'Shabnam-Medium-FD' !important;
+    }
+    span{
+        font-family: 'Shabnam-Medium-FD' !important;
+
     }
 }
 

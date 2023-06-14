@@ -3,6 +3,12 @@
   src: url("../../public/Font/YekanBoom.ttf") format("ttf");
   src: url("../../public/Font/YekanBoom.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Shabnam-Medium-FD";
+  src: url("../../public/Font/Shabnam-Medium-FD.ttf") format("ttf");
+  src: url("../../public/Font/Shabnam-Medium-FD.eot") format("ttf");
+  src: url("../../public/Font/Shabnam-Medium-FD.woff2") format("woff2");
+}
 * {
   margin: 0px;
   padding: 0px;
@@ -33,6 +39,16 @@ html, body, #root {
 }
 .warning-toast svg {
   fill: #fb950b !important;
+}
+
+.rmdp-button, .rmdp-container {
+  font-family: "Shabnam-Medium-FD" !important;
+}
+.rmdp-button input, .rmdp-container input {
+  font-family: "Shabnam-Medium-FD" !important;
+}
+.rmdp-button span, .rmdp-container span {
+  font-family: "Shabnam-Medium-FD" !important;
 }
 
 header {

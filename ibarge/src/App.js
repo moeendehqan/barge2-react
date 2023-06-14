@@ -17,7 +17,7 @@ import ImageFromPdf from './page/sub/imagefrompdf';
 import CompressPdf from './page/sub/compresspdf';
 import MergePdf from './page/sub/mergepdf';
 import ExtractColors from './page/sub/extractcolors';
-
+import RemoveBg from './page/sub/removebg';
 function App() {
   return (
 
@@ -38,6 +38,7 @@ function App() {
           <Route path='compresspdf' element={<CompressPdf/>}></Route>
           <Route path='mergepdf' element={<MergePdf/>}></Route>
           <Route path='extractcolors' element={<ExtractColors/>}></Route>
+          <Route path='removebg' element={<RemoveBg/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
