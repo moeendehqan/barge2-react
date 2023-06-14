@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-import MsgInPage from "../../componets/msg/MsgInPage"
 import { getCookie, setCookie } from "../../function/cookie"
 import { useNavigate } from "react-router-dom"
 
@@ -13,7 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Price = ()=>{
 
-    const [msg,setMsg] = useState('')
     const [user,setUser] = useState({type:'حقیقی',phone:'',sex:'مرد'})
     const [pay,setPay] = useState('pay1')
     const navigate = useNavigate()
