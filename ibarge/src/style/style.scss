@@ -700,12 +700,35 @@ main{
         border: 1px $clrJetStream solid;
         border-radius: 10px;
         padding: 50px 100px;
-        h2{
-            font-size: 19pt;
-            color: $clrOuterSpace;
-            text-align: right;
+        .navigate{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
             margin: 0px 0px 40px 0px;
-            align-self: self-start;
+            .homeNav{
+                &:hover{
+                    color: $clrMaximumBlueGreen;
+                    cursor: pointer;
+                }
+            }
+
+            span{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 15pt;
+                color: $clrOuterSpace;
+                margin: 0px 5px;
+
+
+            }
+            h2{
+                font-size: 17pt;
+                color: $clrOuterSpace;
+                text-align: right;
+            }
         }
         .option{
             display: flex;

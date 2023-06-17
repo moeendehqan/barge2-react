@@ -6,6 +6,7 @@ import clipboardCopy from 'clipboard-copy';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
+import NavigateSubPage from "../../componets/navigateSubPage";
 
 const LoremIpsum = () =>{
     const [amount, setAmount] = useState(1)
@@ -44,7 +45,8 @@ const LoremIpsum = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>متن تصادفی</h2>
+                <NavigateSubPage title={'متن تصادفی'}/>
+
                 <section className="option">
                     <input className="inputNumber" type="number" value={amount} onChange={(e)=>setAmount(e.target.value)} />
                     <div className='rdi'>

@@ -5,6 +5,7 @@ import { OnRun } from "../../config/OnRun"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
+import NavigateSubPage from '../../componets/navigateSubPage'
 
 const CompressImage = () =>{
     const [file, setFile] = useState(null)
@@ -90,7 +91,7 @@ const CompressImage = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>کاهش حجم عکس</h2>
+                <NavigateSubPage title={'کاهش حجم عکس'}/>
                 <section className="option">
                     <input  accept="image/*" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
                     <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری تصویر</label>

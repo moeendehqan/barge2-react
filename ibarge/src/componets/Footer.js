@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom"
 
 const Footer = () =>{
+    const navigate = useNavigate()
     return(
         <footer>
             <div className="logo">
@@ -19,7 +21,7 @@ const Footer = () =>{
                     </span>
                 </div>
                 <div class='links'>
-                    <p>راهنما</p>
+                    <p onClick={()=>navigate('/desk/roles')}>قوانین</p>
                     <p>سوالات متداول</p>
                     <p>درباره ما</p>
                     <p>ارتباط با ما</p>

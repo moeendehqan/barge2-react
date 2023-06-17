@@ -5,6 +5,7 @@ import MsgInPage from "../../componets/msg/MsgInPage"
 import { getCookie, setCookie } from "../../function/cookie"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
+import NavigateSubPage from "../../componets/navigateSubPage"
 
 
 const Login = ()=>{
@@ -75,8 +76,7 @@ const Login = ()=>{
         <div className="pghlf">
             <ToastContainer autoClose={3000} />
             <section>
-                <h2>ورود با شماره همراه</h2>
-
+                <NavigateSubPage title={'ورود با شماره همراه'}/>
                 {
                     input.phase=='phone'?
                     

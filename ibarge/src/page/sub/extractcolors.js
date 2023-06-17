@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { BiShow } from "react-icons/bi";
 import { rgbToHex ,invertRgbColor} from "../../function/rgbToHex";
 import { RxCopy } from "react-icons/rx";
+import NavigateSubPage from '../../componets/navigateSubPage'
 
 const ExtractColors = () =>{
     const [file, setFile] = useState(null)
@@ -83,7 +84,7 @@ const ExtractColors = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>استخراج رنگ از تصویر</h2>
+                <NavigateSubPage title={'استخراج رنگ از تصویر'}/>
                 <section className="option">
                     <input  accept="image/*" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
                     <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری تصویر</label>

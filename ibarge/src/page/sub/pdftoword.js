@@ -5,6 +5,7 @@ import { OnRun } from "../../config/OnRun"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
+import NavigateSubPage from "../../componets/navigateSubPage";
 
 const PdfToWord = () =>{
     const [file, setFile] = useState(null)
@@ -82,7 +83,8 @@ const PdfToWord = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل پی دی اف به ورد</h2>
+                <NavigateSubPage title={'تبدیل پی دی اف به ورد'}/>
+
                 <section className="option">
                     <input  accept=".pdf" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
                     <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری پی دی اف</label>

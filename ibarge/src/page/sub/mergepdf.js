@@ -5,6 +5,7 @@ import { OnRun } from "../../config/OnRun"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
+import NavigateSubPage from "../../componets/navigateSubPage";
 
 const MergePdf = () =>{
     const [file1, setFile1] = useState(null)
@@ -84,7 +85,7 @@ const MergePdf = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>ادغام پی دی اف</h2>
+                <NavigateSubPage title={'ادغام پی دی اف'}/>
                 <section className="option">
                     <input  accept=".pdf" onChange={(e)=>setFile1(e.target.files[0])} className='file' id='file1' type='file'/>
                     <label className={file1!=null?'selectedFile':''} htmlFor='file1' >بارگذاری پی دی اف</label>

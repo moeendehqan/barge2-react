@@ -8,6 +8,7 @@ import Login from './page/sub/Login';
 import Profile from './page/sub/profile';
 import Price from './page/sub/price';
 import ReturnPay from './page/sub/returnPay';
+import Roles from './page/additional/roles';
 
 import ImageToText from './page/sub/imagetotext';
 import PdfToWord from './page/sub/pdftoword';
@@ -31,6 +32,7 @@ function App() {
           <Route path='profile' element={<Profile/>}></Route>
           <Route path='price' element={<Price/>}></Route>
           <Route path='paid' element={<ReturnPay/>}></Route>
+          <Route path='roles' element={<Roles/>}></Route>
           <Route path='imagetotext' element={<ImageToText/>}></Route>
           <Route path='pdftoword' element={<PdfToWord/>}></Route>
           <Route path='convertdate' element={<ConvertDate/>}></Route>

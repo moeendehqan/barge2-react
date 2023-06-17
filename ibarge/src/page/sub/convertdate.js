@@ -11,6 +11,7 @@ import persian from "react-date-object/calendars/persian"
 import gregorian from "react-date-object/calendars/gregorian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import gregorian_fa from "react-date-object/locales/gregorian_fa"
+import NavigateSubPage from '../../componets/navigateSubPage'
 
 
 
@@ -47,7 +48,7 @@ const ConvertDate = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل تاریخ</h2>
+                <NavigateSubPage title={'تبدیل تاریخ'}/>
                 <section className="option">
                     <div className='rdi'>
                         <input checked={option=='fromGorgian'} onChange={e=>setOption(e.target.value)} id='gr_sh' type='radio' name="type" value="fromGorgian"/>

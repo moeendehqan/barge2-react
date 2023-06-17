@@ -6,6 +6,7 @@ import clipboardCopy from 'clipboard-copy';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
+import NavigateSubPage from "../../componets/navigateSubPage";
 
 const PdfToText = () =>{
     const [file, setFile] = useState(null)
@@ -71,7 +72,7 @@ const PdfToText = () =>{
         <div className="sub">
             <ToastContainer autoClose={3000} />
             <div className="box">
-                <h2>تبدیل پی دی اف به متن</h2>
+                <NavigateSubPage title={'تبدیل پی دی اف به متن'}/>
                 <section className="option">
                     <input  accept=".pdf" onChange={(e)=>setFile(e.target.files[0])} className='file' id='file' type='file'/>
                     <label className={file!=null?'selectedFile':''} htmlFor='file' >بارگذاری پی دی اف</label>
