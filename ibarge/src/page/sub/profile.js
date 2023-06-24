@@ -9,6 +9,7 @@ import Button from "react-multi-date-picker/components/button"
 import DatePicker, { DateObject } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
+import NavigateSubPage from "../../componets/navigateSubPage"
 
 const Profile = ()=>{
 
@@ -55,6 +56,8 @@ const Profile = ()=>{
     return(
         <div className="pghlf">
             <section>
+            <NavigateSubPage title={'پروفایل'}/>
+
                 <div className="intRdi">
                     <input checked={user.type == 'حقوقی'} onChange={(e)=>setUser({...user,type:e.target.value})} type="radio" id="comp" value='حقوقی'/>
                     <label htmlFor="comp">حقوقی</label>

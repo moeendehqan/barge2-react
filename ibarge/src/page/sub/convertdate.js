@@ -9,8 +9,12 @@ import { BiShow } from "react-icons/bi";
 import DatePicker, { DateObject } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import gregorian from "react-date-object/calendars/gregorian"
+import arabic from "react-date-object/calendars/arabic"
+
 import persian_fa from "react-date-object/locales/persian_fa"
 import gregorian_fa from "react-date-object/locales/gregorian_fa"
+import arabic_fa from "react-date-object/locales/arabic_fa"
+
 import NavigateSubPage from '../../componets/navigateSubPage'
 
 
@@ -52,15 +56,19 @@ const ConvertDate = () =>{
                 <section className="option">
                     <div className='rdi'>
                         <input checked={option=='fromGorgian'} onChange={e=>setOption(e.target.value)} id='gr_sh' type='radio' name="type" value="fromGorgian"/>
-                        <label htmlFor='gr_sh'>از میلادی<span></span></label>
+                        <label htmlFor='gr_sh'>میلادی<span></span></label>
                         <input checked={option=='fromShamsi'} onChange={e=>setOption(e.target.value)} id='sh_gr' type='radio' name="type" value="fromShamsi"/>
-                        <label htmlFor='sh_gr'>از خورشیدی<span></span></label>
+                        <label htmlFor='sh_gr'>شمسی (خورشیدی)<span></span></label>
+                        <input checked={option=='fromQamari'} onChange={e=>setOption(e.target.value)} id='qm_gr' type='radio' name="type" value="fromQamari"/>
+                        <label htmlFor='qm_gr'>قمری<span></span></label>
                     </div>
                     <div className='rdi'>
                         {
                             option=='fromShamsi'?
                             <DatePicker  calendar={persian} locale={persian_fa} value={date} onChange={(e)=>setDate(e)}/>
-                            :<DatePicker  calendar={gregorian} locale={gregorian_fa} value={date} onChange={(e)=>setDate(e)}/>
+                            :option=='fromGorgian'?
+                            <DatePicker  calendar={gregorian} locale={gregorian_fa} value={date} onChange={(e)=>setDate(e)}/>
+                            :<DatePicker  calendar={arabic} locale={arabic_fa} value={date} onChange={(e)=>setDate(e)}/>
                         }
                     </div>
                 </section>
@@ -76,7 +84,7 @@ const ConvertDate = () =>{
                                 <img id='borjimg' src={process.env.PUBLIC_URL + '/icon/borj/' + result.borj.borjFilename} />
                             </div>
                             <div className='dateBox'>
-                                <h6>خورشیدی</h6>
+                                <h6>شمسی (خورشیدی)</h6>
                                 <p id='jalalistr'>{result.jalali.str}</p>
                                 <p id='jalaliint'>{result.jalali.int}</p>
                             </div>

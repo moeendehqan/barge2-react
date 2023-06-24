@@ -400,6 +400,7 @@ main{
 .pghlf{
     display: flex;
     flex-direction: row;
+
     >section{
         width: 50%;
         display: flex;
@@ -655,7 +656,37 @@ main{
             }
 
         }
-
+        .navigate{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            margin: 0px 0px 40px 0px;
+            .homeNav{
+                &:hover{
+                    color: $clrMaximumBlueGreen;
+                    cursor: pointer;
+                }
+            }
+    
+            span{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 15pt;
+                color: $clrOuterSpace;
+                margin: 0px 5px;
+    
+    
+            }
+            h2{
+                font-size: 17pt;
+                color: $clrOuterSpace;
+                text-align: right;
+                margin-bottom: 0px !important;
+            }
+        }
 
     }
     >img{
@@ -981,22 +1012,30 @@ main{
                         font-size: 12pt;
                     }
                     &:hover{
-                        span{
+                        .btns{
                             display: flex;
                         }
                     }
-                    span{
+                    .btns{
                         display: none;
                         position: absolute;
+                        top: calc(75% - 20px);
+                    }
+                    span{
+                        display: flex;
                         background: rgba($clrAntiFlashWhite, 70);
                         border-radius: 50%;
-                        width: 70px;
-                        height: 70px;
-                        top: calc(50% - 35px);
+                        width: 40px;
+                        height: 40px;
                         align-items: center;
                         justify-content: center;
-                        font-size: 40pt;
-                        color: #464646;
+                        font-size: 30pt;
+                        color: $clrOuterSpace;
+                        margin: 10px;
+                        transition: 0.5s;
+                        &:hover{
+                            background: rgba($clrJetStream, 70);
+                        }
                     }
                 }
             }

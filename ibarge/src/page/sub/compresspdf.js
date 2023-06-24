@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
 import NavigateSubPage from "../../componets/navigateSubPage";
+import {TiDeleteOutline} from "react-icons/ti"
 
 const CompressPdf = () =>{
     const [file, setFile] = useState(null)
@@ -77,6 +78,19 @@ const CompressPdf = () =>{
     }
 
 
+    const historiDel = (fl,dt,rl) =>{
+        axios.post(OnRun+'/delhistori',{type:'compresspdf',filename:fl,date:dt,pua:pua,result:rl})
+            .then(response=>{
+                if (response.data.replay) {
+                    toast.success('حذف شد!',{position: toast.POSITION.BOTTOM_RIGHT,className: 'postive-toast'})
+                    getHistori()
+                }else{
+                    toast.error(response.data.msg,{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'});
+                }
+            }).catch(error=>{
+                toast.error(error,{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'});
+            })
+    }
 
     useEffect(getHistori,[])
     return(
@@ -101,10 +115,13 @@ const CompressPdf = () =>{
                         {
                             histori.map(i=>{
                                 return(
-                                    <div key={Math.floor(Math.random()*1000)} onClick={()=>historiToResult(i.result)} className="item">
+                                    <div key={Math.floor(Math.random()*1000)} className="item">
                                         <p className="title">{i.filesName}</p>
                                         <p className="date">{i.JalaliDate}</p>
-                                        <span><BiShow/></span>
+                                        <div className="btns">
+                                            <span onClick={()=>historiToResult(i.result)}><BiShow/></span>
+                                            <span onClick={()=>historiDel(i.filesName,i.JalaliDate,i.result)}><TiDeleteOutline/></span>
+                                        </div>
                                     </div>
                                 )
                             })

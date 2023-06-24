@@ -76,7 +76,7 @@ const Login = ()=>{
         <div className="pghlf">
             <ToastContainer autoClose={3000} />
             <section>
-                <NavigateSubPage title={'ورود با شماره همراه'}/>
+            <NavigateSubPage title={'ورود با شماره همراه'}/>
                 {
                     input.phase=='phone'?
                     

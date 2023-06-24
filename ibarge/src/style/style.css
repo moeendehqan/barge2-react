@@ -613,6 +613,32 @@ main {
 .pghlf > section .pay input:checked + label::before {
   background: #27b4c1;
 }
+.pghlf > section .navigate {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0px 0px 40px 0px;
+}
+.pghlf > section .navigate .homeNav:hover {
+  color: #27b4c1;
+  cursor: pointer;
+}
+.pghlf > section .navigate span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15pt;
+  color: #464646;
+  margin: 0px 5px;
+}
+.pghlf > section .navigate h2 {
+  font-size: 17pt;
+  color: #464646;
+  text-align: right;
+  margin-bottom: 0px !important;
+}
 .pghlf > img {
   display: flex;
   align-items: center;
@@ -988,21 +1014,29 @@ main {
   color: #eaf3f6;
   font-size: 12pt;
 }
-.sub .box .histori .items .item:hover span {
+.sub .box .histori .items .item:hover .btns {
   display: flex;
 }
-.sub .box .histori .items .item span {
+.sub .box .histori .items .item .btns {
   display: none;
   position: absolute;
+  top: calc(75% - 20px);
+}
+.sub .box .histori .items .item span {
+  display: flex;
   background: #eaf3f6;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  top: calc(50% - 35px);
+  width: 40px;
+  height: 40px;
   align-items: center;
   justify-content: center;
-  font-size: 40pt;
+  font-size: 30pt;
   color: #464646;
+  margin: 10px;
+  transition: 0.5s;
+}
+.sub .box .histori .items .item span:hover {
+  background: #bcccd2;
 }
 
 @media only screen and (max-width: 1200px) {

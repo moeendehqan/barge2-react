@@ -1,4 +1,6 @@
 
+import NavigateSubPage from "../../componets/navigateSubPage"
+
 
 
 
@@ -6,6 +8,8 @@ const Roles = () =>{
     return(
         <div className="pghlf">
             <section>
+            <NavigateSubPage title={'قوانین'}/>
+
                 <ul>
                     <li>
                         <p>محدودیت های استفاده</p>

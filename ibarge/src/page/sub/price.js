@@ -5,6 +5,7 @@ import { getCookie, setCookie } from "../../function/cookie"
 import { useNavigate } from "react-router-dom"
 
 import DatePicker, { DateObject } from "react-multi-date-picker"
+import NavigateSubPage from "../../componets/navigateSubPage"
 
 import { OnRun } from "../../config/OnRun"
 import { ToastContainer, toast } from 'react-toastify';
@@ -59,13 +60,15 @@ const Price = ()=>{
         <div className="pghlf">
             <ToastContainer autoClose={3000} />
             <section>
+                <NavigateSubPage title={'افزایش اعتبار'}/>
+
                 <h2>تعرفه ها</h2>
                    <div className="pay">
                         <input checked={pay=='pay1'} onChange={(e)=>setPay(e.target.value)}  type='radio' name='termPlan' value='pay1' id='pay1'/>
                         <label htmlFor='pay1'>
                             <p>طرح تک برگ (یک ماهه)</p>
                             <div className='ticket ticket1'>
-                                <h6>25,000 تومان</h6>
+                                <h6>18 هزار تومان</h6>
                                 <div className='off'>
                                     <p></p>
                                     <span></span>
@@ -87,7 +90,7 @@ const Price = ()=>{
                         <label htmlFor='pay2'>
                             <p>طرح دو برگ (دوماهه)</p>
                             <div className='ticket ticket2'>
-                                <h6>50,000 تومان</h6>
+                                <h6>36 هزار تومان</h6>
                                 <div className='off'>
                                     <p>15%</p>
                                     <span>تخفیف</span>
@@ -102,7 +105,7 @@ const Price = ()=>{
                                 </div>
                                 <div className='perMonth'>
                                     <p>تومان</p>
-                                    <span>42,500</span>
+                                    <span>30 هزار</span>
                                 </div>
                             </div>
                         </label>
@@ -110,7 +113,7 @@ const Price = ()=>{
                         <label htmlFor='pay3'>
                             <p>طرح سه برگ (سه ماهه)</p>
                             <div className='ticket ticket3'>
-                                <h6>75,000 تومان</h6>
+                                <h6>54 هزار تومان</h6>
                                 <div className='off'>
                                     <p>25%</p>
                                     <span>تخفیف</span>
@@ -125,7 +128,7 @@ const Price = ()=>{
                                 </div>
                                 <div className='perMonth'>
                                     <p>تومان</p>
-                                    <span>56,250</span>
+                                    <span>40 هزار</span>
                                 </div>
                             </div>
                         </label>
@@ -133,7 +136,7 @@ const Price = ()=>{
                         <label htmlFor='pay6'>
                             <p>طرح شش برگ (شش ماهه)</p>
                             <div className='ticket ticket6'>
-                                <h6>150,000 تومان</h6>
+                                <h6>108 هزار تومان</h6>
                                 <div className='off'>
                                     <p>40%</p>
                                     <span>تخفیف</span>
@@ -148,7 +151,7 @@ const Price = ()=>{
                                 </div>
                                 <div className='perMonth'>
                                     <p>تومان</p>
-                                    <span>90,000</span>
+                                    <span>64 هزار</span>
                                 </div>
                             </div>
                         </label>
@@ -156,7 +159,7 @@ const Price = ()=>{
                         <label htmlFor='pay12'>
                             <p>طرح سال برگ (یکساله)</p>
                             <div className='ticket ticket12'>
-                                <h6>300,000 تومان</h6>
+                                <h6>216 هزار تومان</h6>
                                 <div className='off'>
                                     <p>50%</p>
                                     <span>تخفیف</span>
@@ -171,7 +174,7 @@ const Price = ()=>{
                                 </div>
                                 <div className='perMonth'>
                                     <p>تومان</p>
-                                    <span>150,000</span>
+                                    <span>108 هزار تومان</span>
                                 </div>
                             </div>
                         </label>
