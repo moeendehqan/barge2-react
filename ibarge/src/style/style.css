@@ -1,12 +1,24 @@
 @font-face {
   font-family: "YekanBoom";
-  src: url("../../public/Font/YekanBoom.ttf") format("ttf");
+  src: url("../../public/Font/YekanBoom.ttf") format("TrueType");
   src: url("../../public/Font/YekanBoom.woff2") format("woff2");
 }
 @font-face {
+  font-family: "YekanPlus";
+  src: url("../../public/Font/YekanPlus.ttf") format("TrueType");
+  src: url("../../public/Font/YekanPlus.woff2") format("woff2");
+  src: url("../../public/Font/YekanPlus.eot") format("eot");
+  src: url("../../public/Font/YekanPlus.otf") format("otf");
+  src: url("../../public/Font/YekanPlus.woff") format("woff");
+}
+@font-face {
+  font-family: "YekanPlusBold";
+  src: url("../../public/Font/BYekanPlus Bold.ttf") format("TrueType");
+}
+@font-face {
   font-family: "Shabnam-Medium-FD";
-  src: url("../../public/Font/Shabnam-Medium-FD.ttf") format("ttf");
-  src: url("../../public/Font/Shabnam-Medium-FD.eot") format("ttf");
+  src: url("../../public/Font/Shabnam-Medium-FD.ttf") format("TrueType");
+  src: url("../../public/Font/Shabnam-Medium-FD.eot") format("TrueType");
   src: url("../../public/Font/Shabnam-Medium-FD.woff2") format("woff2");
 }
 * {
@@ -51,6 +63,66 @@ html, body, #root {
   font-family: "Shabnam-Medium-FD" !important;
 }
 
+.loader {
+  position: fixed;
+  inset: 10% 10% 10% 10%;
+  background: rgba(188, 204, 210, 0.85);
+  z-index: 5;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
+}
+.loader .logoMotion {
+  position: relative;
+  width: 200px;
+  height: 193px;
+}
+.loader .logoMotion img {
+  position: absolute;
+}
+.loader .logoMotion :nth-child(2) {
+  animation: loader 4s alternate 0s infinite forwards;
+  transition: 0.5s;
+}
+.loader .logoMotion :nth-child(3) {
+  animation: loader 4s alternate 1s infinite forwards;
+  transition: 0.5s;
+}
+.loader .logoMotion :nth-child(4) {
+  animation: loader 4s alternate 2s infinite forwards;
+  transition: 0.5s;
+}
+.loader .logoMotion :nth-child(5) {
+  animation: loader 4s alternate 3s infinite forwards;
+  transition: 0.5s;
+}
+.loader h4 {
+  font-size: 30pt;
+  margin: 25px;
+  color: #464646;
+}
+
+@keyframes loader {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 header {
   background: #464646;
   height: 150px;
@@ -67,6 +139,7 @@ header .logo {
 header .logo img {
   width: 130px;
   cursor: pointer;
+  margin-bottom: -5px;
 }
 header nav {
   width: 50%;
@@ -84,7 +157,7 @@ header nav ul li {
 }
 header nav ul li > p {
   color: #eaf3f6;
-  font-size: 15pt;
+  font-size: 17pt;
 }
 header nav ul li:hover > p {
   color: #ffffff;
@@ -99,12 +172,15 @@ header nav ul li ul {
   flex-direction: column;
   background: #ffffff;
   border: 1px #27b4c1 solid;
-  padding: 10px 5px;
+  padding: 12px 20px;
   border-radius: 8px;
+  width: 200px;
 }
 header nav ul li ul p {
   color: #464646;
   font-size: 13pt;
+  font-family: "YekanPlus";
+  margin: 8px 0px;
 }
 header nav ul li ul p:hover {
   color: #27b4c1;
@@ -125,7 +201,7 @@ header .LoginHeader .login > p {
 }
 header .LoginHeader .login span {
   color: #27b4c1;
-  font-size: 18pt;
+  font-size: 30pt;
   margin: 0px 5px;
   display: flex;
   flex-direction: row;
@@ -170,7 +246,7 @@ header .LoginHeader .login .hearts {
 }
 header .LoginHeader .login .hearts p {
   color: #fbd00b;
-  font-size: 15pt;
+  font-size: 20pt;
   display: flex;
   align-items: center;
 }
@@ -178,6 +254,7 @@ header .LoginHeader .login .nameUser {
   color: #eaf3f6;
   font-size: 14pt;
   margin: 0px 10px;
+  font-family: "YekanPlus";
 }
 
 footer {
@@ -188,9 +265,13 @@ footer .logo {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin: 100px 0px;
 }
 footer .logo :nth-child(2) {
   margin: 0px 20px;
+}
+footer .logo img {
+  width: 280px;
 }
 footer .box {
   border: 1px rgba(120, 122, 123, 0.6) solid;
@@ -202,6 +283,7 @@ footer .box .BusinessPartners {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 10px 0px;
 }
 footer .box .links {
   display: flex;
@@ -213,7 +295,7 @@ footer .box .links {
   padding-top: 10px;
 }
 footer .box .links p {
-  font-size: 13pt;
+  font-size: 17pt;
   color: #464646;
   cursor: pointer;
 }
@@ -228,21 +310,57 @@ main {
   border-radius: 15px;
   box-shadow: 0px 0px 10px 5px rgba(120, 122, 123, 0.2);
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .homeMenu {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
+  padding: 0px auto;
+  justify-content: center;
 }
 .homeMenu .itemMenu {
   width: 280px;
-  height: 320px;
+  height: 280px;
   display: flex;
   flex-direction: column;
-  margin: 20px 10px;
+  margin: 10px 10px;
+  justify-content: center;
+  align-items: center;
+}
+.homeMenu .itemMenu .circleLoad {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(45deg, rgba(188, 204, 210, 0.12), rgba(70, 70, 70, 0.2), rgba(188, 204, 210, 0.12));
+  background-size: 200% 200%;
+  animation: circleLoad 3s infinite linear;
+}
+@keyframes circleLoad {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 .homeMenu .itemMenu:hover .circle {
   border: 2px #fbd00b solid;
@@ -269,11 +387,13 @@ main {
 }
 .homeMenu .itemMenu .circle h3 {
   color: #464646;
-  font-size: 15pt;
+  font-size: 12pt;
   margin-top: -20px;
+  font-family: "YekanPlus";
 }
 .homeMenu .itemMenu p {
   color: #464646;
+  display: none;
 }
 
 .msgInPage {
@@ -288,9 +408,14 @@ main {
   color: #464646;
 }
 
+.pghlfRoles {
+  height: 80vh;
+}
+
 .pghlf {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .pghlf > section {
   width: 50%;
@@ -346,6 +471,15 @@ main {
 .pghlf > section .frmLg .captchaImg {
   border-radius: 8px;
   border: 1px #27b4c1 solid;
+  cursor: pointer;
+}
+.pghlf > section .frmLg p {
+  color: #787a7b;
+  font-size: 11pt;
+  margin: 15px 0px;
+}
+.pghlf > section .frmLg p span {
+  color: #27b4c1;
   cursor: pointer;
 }
 .pghlf > section .prflFrm {
@@ -471,6 +605,7 @@ main {
   border-radius: 8px;
   color: #eaf3f6;
   font-size: 20pt;
+  margin-top: 20px;
 }
 .pghlf > section .pay {
   display: flex;
@@ -621,6 +756,9 @@ main {
   width: 100%;
   margin: 0px 0px 40px 0px;
 }
+.pghlf > section .navigate h2 {
+  font-family: "YekanPlus" !important;
+}
 .pghlf > section .navigate .homeNav:hover {
   color: #27b4c1;
   cursor: pointer;
@@ -630,14 +768,50 @@ main {
   align-items: center;
   justify-content: center;
   font-size: 15pt;
-  color: #464646;
+  color: #787a7b;
   margin: 0px 5px;
 }
 .pghlf > section .navigate h2 {
-  font-size: 17pt;
-  color: #464646;
+  font-size: 12pt;
+  color: #787a7b;
   text-align: right;
   margin-bottom: 0px !important;
+}
+.pghlf > section .roles {
+  border: 1px #27b4c1 solid;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 0px 25px;
+  overflow: hidden;
+}
+.pghlf > section .roles > ul {
+  height: 100%;
+  overflow-y: scroll;
+}
+.pghlf > section .roles > ul::-webkit-scrollbar {
+  width: 8px;
+}
+.pghlf > section .roles > ul::-webkit-scrollbar-thumb {
+  background: #27b4c1;
+  border-radius: 8px;
+}
+.pghlf > section .roles > ul::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px #27b4c1 solid;
+}
+.pghlf > section .roles > ul li {
+  list-style-type: none;
+}
+.pghlf > section .roles > ul p {
+  color: #787a7b;
+}
+.pghlf > section .roles > ul > li > p {
+  font-size: 21pt;
+  margin: 10px 0px;
+}
+.pghlf > section .roles > ul > li > ul > li > p {
+  font-size: 13pt;
 }
 .pghlf > img {
   display: flex;
@@ -678,8 +852,10 @@ main {
 .pghlf .intRdi > input + label {
   flex: 1;
   transition: 0.5s;
-  font-size: 19pt;
+  font-size: 15pt;
   color: #464646;
+  font-family: "YekanPlus";
+  padding-top: 4px;
 }
 .pghlf .intRdi > input:checked + label {
   background: #fbd00b;
@@ -707,6 +883,9 @@ main {
   width: 100%;
   margin: 0px 0px 40px 0px;
 }
+.sub .box .navigate h2 {
+  font-family: "YekanPlus" !important;
+}
 .sub .box .navigate .homeNav:hover {
   color: #27b4c1;
   cursor: pointer;
@@ -716,13 +895,14 @@ main {
   align-items: center;
   justify-content: center;
   font-size: 15pt;
-  color: #464646;
+  color: #787a7b;
   margin: 0px 5px;
 }
 .sub .box .navigate h2 {
-  font-size: 17pt;
-  color: #464646;
+  font-size: 12pt;
+  color: #787a7b;
   text-align: right;
+  margin-bottom: 0px !important;
 }
 .sub .box .option {
   display: flex;
@@ -1037,6 +1217,37 @@ main {
 }
 .sub .box .histori .items .item span:hover {
   background: #bcccd2;
+}
+
+.lg-adm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.lg-adm .cntnr {
+  width: 250px;
+  padding: 25px;
+  background: #bcccd2;
+  border-radius: 20px;
+  border: 1px #464646 solid;
+  align-items: center;
+  justify-content: center;
+}
+.lg-adm .cntnr input {
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  margin: 5px 0px;
+}
+.lg-adm .cntnr button {
+  width: 100%;
+  background: #fbd00b;
+  border: 1px #464646 solid;
+  height: 25px;
+  margin: 5px 0px;
 }
 
 @media only screen and (max-width: 1200px) {

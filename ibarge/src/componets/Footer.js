@@ -22,8 +22,7 @@ const Footer = () =>{
                 </div>
                 <div class='links'>
                     <p onClick={()=>navigate('/desk/roles')}>قوانین</p>
-                    <p>سوالات متداول</p>
-                    <p>درباره ما</p>
+                    <p onClick={()=>navigate('/desk/faq')}>سوالات متداول</p>
                     <p>ارتباط با ما</p>
                 </div>
 

@@ -8,12 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BiShow } from "react-icons/bi";
 import {TiDeleteOutline} from "react-icons/ti"
 import NavigateSubPage from '../../componets/navigateSubPage'
+import Loader from "../../componets/loader"
+
+
 const ImageToText = () =>{
     const [file, setFile] = useState(null)
     const [option, setOption] = useState('fas')
     const [histori, setHistori] = useState([])
     const [result, setResult] = useState('')
     const pua = getCookie('pua')
+    const [loaderActiv, setLoaderActive] =useState(false)
 
 
 
@@ -23,8 +27,10 @@ const ImageToText = () =>{
         data.append('pua',pua)
         data.append('option',option)
         if (file!=null) {
+            setLoaderActive(true)
             axios.post(OnRun+'/api/imagetotext',data)
-                .then(response=>{
+            .then(response=>{
+                    setLoaderActive(false)
                     if(response.data.replay){
                         setHistori(response.data.histori)
                         setResult(response.data.result)
@@ -67,8 +73,11 @@ const ImageToText = () =>{
     }
 
     const historiDel = (fl,dt,rl) =>{
+        setLoaderActive(true)
+        
         axios.post(OnRun+'/delhistori',{type:'imagetotext',filename:fl,date:dt,pua:pua,result:rl})
-            .then(response=>{
+        .then(response=>{
+                setLoaderActive(false)
                 if (response.data.replay) {
                     toast.success('حذف شد!',{position: toast.POSITION.BOTTOM_RIGHT,className: 'postive-toast'})
                     getHistori()
@@ -84,6 +93,7 @@ const ImageToText = () =>{
 
     return(
         <div className="sub">
+            <Loader active={loaderActiv} />
             <ToastContainer autoClose={3000} />
             <div className="box">
                 <NavigateSubPage title={'تبدیل عکس به متن'}/>

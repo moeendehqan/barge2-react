@@ -38,7 +38,6 @@ const Price = ()=>{
             axios.post(OnRun+'/pay/create',{pay:pay,pua:pua})
                 .then(response=>{
                     if (response.data.replay) {
-                        console.log(response.data)
                         window.location.href = 'https://api.payping.ir/v2/pay/gotoipg/'+response.data.responseCode
                     }else{
                         toast.error(response.data.msg,{position: toast.POSITION.BOTTOM_RIGHT,className: 'negetive-toast'});
@@ -64,6 +63,29 @@ const Price = ()=>{
 
                 <h2>تعرفه ها</h2>
                    <div className="pay">
+                        <input checked={pay=='pay0'} onChange={(e)=>setPay(e.target.value)}  type='radio' name='termPlan' value='pay0' id='pay0'/>
+                        <label htmlFor='pay0'>
+                            <p>یکروزه</p>
+                            <div className='ticket ticket1'>
+                                <h6>5 هزار تومان</h6>
+                                <div className='off'>
+                                    <p></p>
+                                    <span></span>
+                                </div>
+                                <div className='cut'>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </div>
+                                <div className='perMonth'>
+                                    <p></p>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </label>
+
                         <input checked={pay=='pay1'} onChange={(e)=>setPay(e.target.value)}  type='radio' name='termPlan' value='pay1' id='pay1'/>
                         <label htmlFor='pay1'>
                             <p>طرح تک برگ (یک ماهه)</p>

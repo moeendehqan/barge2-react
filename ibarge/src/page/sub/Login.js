@@ -84,6 +84,7 @@ const Login = ()=>{
                         <input value={input.phone} onChange={(e)=>setInput({...input,phone:e.target.value})} type="number" placeholder="شماره همراه"/>
                         {captchaImage?<img className="captchaImg" onClick={getCaptcha} src={captchaImage} />:null}
                         <input value={input.captcha} onChange={(e)=>setInput({...input,captcha:e.target.value})} type="number" placeholder="کد داخل تصویر را وارد کنید" />
+                        <p>بهره برداری از برگه به منزله پذیرش <span onClick={()=>navigate('/desk/roles')}>قوانین</span> آن است</p>
                         <button onClick={applyPhone}>تایید</button>
                     </div>
                     :

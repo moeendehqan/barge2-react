@@ -9,6 +9,7 @@ import Profile from './page/sub/profile';
 import Price from './page/sub/price';
 import ReturnPay from './page/sub/returnPay';
 import Roles from './page/additional/roles';
+import Faq from './page/additional/faq';
 
 import ImageToText from './page/sub/imagetotext';
 import PdfToWord from './page/sub/pdftoword';
@@ -21,6 +22,9 @@ import CompressPdf from './page/sub/compresspdf';
 import MergePdf from './page/sub/mergepdf';
 import ExtractColors from './page/sub/extractcolors';
 import RemoveBg from './page/sub/removebg';
+
+import LgAdmin from './page/admin/login';
+
 function App() {
   return (
 
@@ -33,6 +37,7 @@ function App() {
           <Route path='price' element={<Price/>}></Route>
           <Route path='paid' element={<ReturnPay/>}></Route>
           <Route path='roles' element={<Roles/>}></Route>
+          <Route path='faq' element={<Faq/>}></Route>
           <Route path='imagetotext' element={<ImageToText/>}></Route>
           <Route path='pdftoword' element={<PdfToWord/>}></Route>
           <Route path='convertdate' element={<ConvertDate/>}></Route>
@@ -45,6 +50,8 @@ function App() {
           <Route path='extractcolors' element={<ExtractColors/>}></Route>
           <Route path='removebg' element={<RemoveBg/>}></Route>
         </Route>
+        <Route path='/admin' element={<LgAdmin/>}></Route>
+
       </Routes>
     </BrowserRouter>
 

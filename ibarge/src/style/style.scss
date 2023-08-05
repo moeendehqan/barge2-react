@@ -1,15 +1,29 @@
 @font-face {
     font-family: 'YekanBoom';
-    src: url('../../public/Font/YekanBoom.ttf') format('ttf');
+    src: url('../../public/Font/YekanBoom.ttf') format('TrueType');
     src: url('../../public/Font/YekanBoom.woff2') format('woff2');
 }
 
 @font-face {
+    font-family: 'YekanPlus';
+    src: url('../../public/Font/YekanPlus.ttf') format('TrueType');
+    src: url('../../public/Font/YekanPlus.woff2') format('woff2');
+    src: url('../../public/Font/YekanPlus.eot') format('eot');
+    src: url('../../public/Font/YekanPlus.otf') format('otf');
+    src: url('../../public/Font/YekanPlus.woff') format('woff');
+}
+@font-face {
+    font-family: 'YekanPlusBold';
+    src: url('../../public/Font/BYekanPlus\ Bold.ttf') format('TrueType');
+}
+
+@font-face {
     font-family: 'Shabnam-Medium-FD';
-    src: url('../../public/Font/Shabnam-Medium-FD.ttf') format('ttf');
-    src: url('../../public/Font/Shabnam-Medium-FD.eot') format('ttf');
+    src: url('../../public/Font/Shabnam-Medium-FD.ttf') format('TrueType');
+    src: url('../../public/Font/Shabnam-Medium-FD.eot') format('TrueType');
     src: url('../../public/Font/Shabnam-Medium-FD.woff2') format('woff2');
 }
+
 
 
 
@@ -136,6 +150,67 @@ $sizeSide: 7%;
     }
 }
 
+.loader{
+    position: fixed;
+    inset: 10% 10% 10% 10%;
+    background: rgba($clrJetStream,0.85);
+    z-index: 5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(7px);
+    .logoMotion{
+        position: relative;
+        width: 200px;
+        height: 193px;
+
+        img{
+            position: absolute;
+        }
+        :nth-child(2){
+            animation: loader 4s alternate 0s infinite forwards;
+            transition: 0.5s;
+        }
+        :nth-child(3){
+            animation: loader 4s alternate 1s infinite forwards;
+            transition: 0.5s;
+        }
+        :nth-child(4){
+            animation: loader 4s alternate 2s infinite forwards;
+            transition: 0.5s;
+        }
+        :nth-child(5){
+            animation: loader 4s alternate 3s infinite forwards;
+            transition: 0.5s;
+        }
+
+    }
+    h4{
+        font-size: 30pt;
+        margin: 25px;
+        color: $clrOuterSpace;
+    }
+}
+@keyframes loader {
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
 header{
     background: $clrOuterSpace;
     height: 150px;
@@ -150,6 +225,7 @@ header{
         img{
             width: 130px;
             cursor: pointer;
+            margin-bottom: -5px;
         }
     }
     nav{
@@ -165,7 +241,7 @@ header{
                 list-style-type: none;
                 >p{
                     color: $clrAntiFlashWhite;
-                    font-size: 15pt;
+                    font-size: 17pt;
                 }
                 &:hover{
                     >p{
@@ -184,11 +260,14 @@ header{
                     flex-direction: column;
                     background: $clrWhite;
                     border: 1px $clrMaximumBlueGreen solid;
-                    padding: 10px 5px;
+                    padding: 12px 20px;
                     border-radius: 8px;
+                    width: 200px;
                     p{
                         color: $clrOuterSpace;
                         font-size: 13pt;
+                        font-family: 'YekanPlus';
+                        margin: 8px 0px;
                         &:hover{
                             color: $clrMaximumBlueGreen;
                         }
@@ -212,7 +291,7 @@ header{
             }
             span{
                 color: $clrMaximumBlueGreen;
-                font-size: 18pt;
+                font-size: 30pt;
                 margin: 0px 5px;
                 display: flex;
                 flex-direction: row;
@@ -263,7 +342,7 @@ header{
                 flex-direction: row-reverse;
                 p{
                     color: $clrMetallicYellow;
-                    font-size: 15pt;
+                    font-size: 20pt;
                     display: flex;
                     align-items: center;
                 }
@@ -272,6 +351,7 @@ header{
                 color: $clrAntiFlashWhite;
                 font-size: 14pt;
                 margin: 0px 10px;
+                font-family: 'YekanPlus';
             }
         }
 
@@ -286,9 +366,13 @@ footer{
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        margin: 100px 0px;
         :nth-child(2){
             margin: 0px 20px;
 
+        }
+        img{
+            width: 280px;
         }
     }
     .box{
@@ -301,6 +385,7 @@ footer{
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            margin: 10px 0px;
         }
         .links{
             display: flex;
@@ -311,7 +396,7 @@ footer{
             margin: 10px 25px;
             padding-top: 10px;
             p{
-                font-size: 13pt;
+                font-size: 17pt;
                 color: $clrOuterSpace;
                 cursor: pointer;
                 &:hover{
@@ -331,6 +416,10 @@ main{
     border-radius: 15px;
     box-shadow: 0px 0px 10px 5px rgba($clrIsabelline, 0.2);
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -339,14 +428,50 @@ main{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
+    padding: 0px auto;
+    justify-content: center;
     .itemMenu{
         width: 280px;
-        height: 320px;
+        height: 280px;
         display: flex;
         flex-direction: column;
-        margin: 20px 10px;
+        margin: 10px 10px;
+        justify-content: center;
+        align-items: center;
+        .circleLoad{
+            display: flex;
+            flex-direction: column;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(45deg, rgba($clrJetStream,0.12),rgba($clrOuterSpace,0.2),rgba($clrJetStream,0.12));
+            background-size: 200% 200%; // تغییر اندازه گرادیان پس زمینه
+            animation: circleLoad 3s infinite linear; // تغییر مدت زمان انیمیشن به 3 ثانیه
+
+        }
+        @keyframes circleLoad {
+            0% {
+              background-position: 0% 0%; // شروع از بالا چپ
+            }
+            25% {
+              background-position: 100% 0%; // انتقال به بالا راست
+            }
+            50% {
+              background-position: 100% 100%; // انتقال به پایین راست
+            }
+            75% {
+              background-position: 0% 100%; // انتقال به پایین چپ
+            }
+            100% {
+              background-position: 0% 0%; // بازگشت به موقعیت اولیه
+            }
+          }
+
+
+        
         &:hover{
             .circle{
                 border: 2px $clrMetallicYellow solid;
@@ -373,12 +498,14 @@ main{
             }
             h3{
                 color: $clrOuterSpace;
-                font-size: 15pt;
+                font-size: 12pt;
                 margin-top:-20px ;
+                font-family: 'YekanPlus';
             }
         } 
         p{
             color: $clrOuterSpace;
+            display: none;
         }
     }
 }
@@ -397,9 +524,17 @@ main{
     }
 
 }
+
+
+.pghlfRoles{
+    height: 80vh;
+    
+}
 .pghlf{
     display: flex;
     flex-direction: row;
+    width: 100%;
+
 
     >section{
         width: 50%;
@@ -429,6 +564,15 @@ main{
                 border-radius: 8px;
                 border: 1px $clrMaximumBlueGreen solid;
                 cursor: pointer;
+            }
+            p{
+                color: $clrIsabelline;
+                font-size: 11pt;
+                margin: 15px 0px;
+                span{
+                    color: $clrMaximumBlueGreen;
+                    cursor: pointer;
+                }
             }
         }
         .prflFrm{
@@ -489,6 +633,8 @@ main{
         }
         >button{
             @include btnN();
+            margin-top: 20px;
+
         }
         .pay{
             display: flex;
@@ -663,6 +809,9 @@ main{
             justify-content: flex-start;
             width: 100%;
             margin: 0px 0px 40px 0px;
+            h2{
+                font-family: 'YekanPlus' !important;
+            }
             .homeNav{
                 &:hover{
                     color: $clrMaximumBlueGreen;
@@ -675,16 +824,60 @@ main{
                 align-items: center;
                 justify-content: center;
                 font-size: 15pt;
-                color: $clrOuterSpace;
+                color: $clrIsabelline;
                 margin: 0px 5px;
-    
     
             }
             h2{
-                font-size: 17pt;
-                color: $clrOuterSpace;
+                font-size: 12pt;
+                color: $clrIsabelline;
                 text-align: right;
                 margin-bottom: 0px !important;
+            }
+        }
+        .roles{
+            border: 1px $clrMaximumBlueGreen solid;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 0px 25px;
+            overflow: hidden;
+            
+            >ul{
+                height: 100%;
+                overflow-y: scroll;
+                &::-webkit-scrollbar{
+                    width: 8px;
+                }
+                &::-webkit-scrollbar-thumb{
+                    background: $clrMaximumBlueGreen;
+                    border-radius: 8px;
+                }
+                &::-webkit-scrollbar-track{
+                    border-radius: 8px;
+                    background: $clrWhite;
+                    border: 1px $clrMaximumBlueGreen solid;
+
+                }
+                li{
+                    list-style-type: none;
+                }
+                p{
+                    color: $clrIsabelline;
+                }
+                >li{
+                    >p{
+                        font-size: 21pt;
+                        margin: 10px 0px;
+                    }
+                    >ul{
+                        >li{
+                            >p{
+                                font-size: 13pt;
+    
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -705,8 +898,10 @@ main{
             + label{
                 flex: 1;
                 transition: 0.5s;
-                font-size: 19pt;
+                font-size: 15pt;
                 color: $clrOuterSpace;
+                font-family: 'YekanPlus';
+                padding-top: 4px;
             }
             &:checked{
                 + label{
@@ -738,6 +933,9 @@ main{
             justify-content: flex-start;
             width: 100%;
             margin: 0px 0px 40px 0px;
+            h2{
+                font-family: 'YekanPlus' !important;
+            }
             .homeNav{
                 &:hover{
                     color: $clrMaximumBlueGreen;
@@ -750,15 +948,15 @@ main{
                 align-items: center;
                 justify-content: center;
                 font-size: 15pt;
-                color: $clrOuterSpace;
+                color: $clrIsabelline;
                 margin: 0px 5px;
-
-
+    
             }
             h2{
-                font-size: 17pt;
-                color: $clrOuterSpace;
+                font-size: 12pt;
+                color: $clrIsabelline;
                 text-align: right;
+                margin-bottom: 0px !important;
             }
         }
         .option{
@@ -1043,6 +1241,37 @@ main{
     }
 }
 
+.lg-adm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cntnr{
+        width: 250px;
+        padding: 25px;
+        background: $clrJetStream;
+        border-radius: 20px;
+        border: 1px $clrOuterSpace solid;
+        align-items: center;
+        justify-content: center;
+        input{
+            width: 100%;
+            height: 25px;
+            text-align: center;
+            margin: 5px 0px;
+        }
+        button{
+            width: 100%;
+            background: $clrMetallicYellow;
+            border: 1px $clrOuterSpace solid;
+            height: 25px;
+            margin: 5px 0px;
+        }
+
+    }
+}
 
 
 
@@ -1144,10 +1373,12 @@ main{
         }
     }
     .homeMenu{
+
         .itemMenu{
             width: 150px;
             height: 250px;
             margin: 10px 5px;
+
             .circle{
                 width: 135px;
                 height: 135px;

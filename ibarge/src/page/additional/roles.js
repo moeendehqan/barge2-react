@@ -6,9 +6,11 @@ import NavigateSubPage from "../../componets/navigateSubPage"
 
 const Roles = () =>{
     return(
-        <div className="pghlf">
+        <div className="pghlf pghlfRoles">
             <section>
             <NavigateSubPage title={'قوانین'}/>
+            <div className="roles">
+
 
                 <ul>
                     <li>
@@ -79,8 +81,9 @@ const Roles = () =>{
                         </ul>
                     </li>
                 </ul>
+            </div>
             </section>
-            <img />
+            <img src="/img/rule.svg" />
 
 
 
