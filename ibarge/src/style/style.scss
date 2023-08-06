@@ -1274,7 +1274,31 @@ main{
 }
 
 
+.Management{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .admn-menu{
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        background: $clrJetStream;
+        height: 100%;
+        button{
+            background: transparent;
+            border: 0px;
+            width: 100%;
+            padding: 5px;
+            font-size: 19pt;
+            cursor: pointer;
+            &:hover{
+                background: rgba($clrMaximumBlueGreen,0.2);
+                color: $clrWhite;
+            }
 
+        }
+    }
+}
 // media query w<1200
 @media only screen and (max-width: 1200px) {
     .homeMenu{

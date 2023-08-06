@@ -1,6 +1,7 @@
 import './style/style.css'
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-tabulator/lib/styles.css';
 
 import Home from './page/home';
 import Desk from './page/desk';
@@ -22,9 +23,10 @@ import CompressPdf from './page/sub/compresspdf';
 import MergePdf from './page/sub/mergepdf';
 import ExtractColors from './page/sub/extractcolors';
 import RemoveBg from './page/sub/removebg';
+import Management from './page/admin/management';
 
 import LgAdmin from './page/admin/login';
-
+import Users from './componets/admin/users';
 function App() {
   return (
 
@@ -51,6 +53,9 @@ function App() {
           <Route path='removebg' element={<RemoveBg/>}></Route>
         </Route>
         <Route path='/admin' element={<LgAdmin/>}></Route>
+        <Route path='/management' element={<Management/>}>
+          <Route path='users' element={<Users/>}></Route>
+        </Route>
 
       </Routes>
     </BrowserRouter>
